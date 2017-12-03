@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{d2805216-f5db-48ba-8d5b-bb15ef32d7f3}</ProjectGuid>
     <ProjectHome />
-    <StartupFile />
+    <StartupFile>tsne.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
