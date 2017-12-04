@@ -38,12 +38,12 @@ class DogsVsCats(Model):
         self.compile(loss='binary_crossentropy',
             optimizer=SGD(lr=1e-4, momentum=0.9),
             metrics=['accuracy'])
-        
+
     def freeze_vgg16(trainable = False):
         for layer in self.vgg16.layers:
             layer.trainable = trainable
 
-if 1:
+if 0:
     model = DogsVsCats()
     model.load_weights(DATASET('weights_dogs_cats.h5'))
 
@@ -71,5 +71,14 @@ with h5py.File(DATASET('weights_dogs_cats.h5')) as f:
 im_test = imread(DATASET('TransferLearning/validation/cats/14.jpg'))
 im_test = resize(im_test, (150, 150), mode = 'reflect')
 y_features = model.predict(np.expand_dims(im_test, 0))
-print('kernel_shape', last_layer.get_weights()[0].shape)
+kernels = np.transpose(last_layer.get_weights()[0], (2,3,0,1)).reshape((-1,9))
+print('kernel_shape', kernels.shape)
 print('feature_shape', y_features.shape)
+
+kernels_subset = np.array(pd.DataFrame(kernels).sample(n=8000))
+print(kernels_subset.shape)
+
+from sklearn.manifold import TSNE
+tsne = TSNE(n_components=2, verbose=1, perplexity=30, n_iter=300)
+tsne_results = tsne.fit_transform(kernels_subset)
+print(tsne_results.shape)

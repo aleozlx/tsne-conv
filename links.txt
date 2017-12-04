@@ -4,3 +4,4 @@ https://arxiv.org/pdf/1503.01824.pdf
 https://www.cs.cmu.edu/~ckingsf/bioinfo-lectures/matching.pdf
 https://medium.com/@luckylwk/visualising-high-dimensional-datasets-using-pca-and-t-sne-in-python-8ef87e7915b
 https://jacobgil.github.io/deeplearning/filter-visualizations
+https://distill.pub/2016/misread-tsne/
